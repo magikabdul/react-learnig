@@ -18,7 +18,7 @@ export class ToDoList extends Component {
 	render() {
 		const { title } = this.props;
 		const { tasks, draft } = this.state;
-		return (<div>
+		return (<div className="container">
 			<h1>{title}</h1>
 			{tasks.map(task => (<ToDoItem text={task.text} done={task.done} />))}
 			<NewToDoForm onSubmit={this.addToDo} onChange={this.updateDraft} draft={draft} />

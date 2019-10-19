@@ -1,8 +1,10 @@
 import React from 'react';
 
 export const NewToDoForm = props => (
-   <div>
-      <input type="text" onChange={props.onChange} value={props.draft} />
-      <button onClick={props.onSubmit}>Add</button>
+   <div className="form">
+      <input className="form__input" type="text" onChange={props.onChange} value={props.draft} />
+      <button className="form__button" onClick={props.onSubmit}>
+         Add
+      </button>
    </div>
 );
