@@ -1,5 +1,29 @@
 import React, { Component } from 'react';
 
+class TaskToDo extends Component {
+   static defaultProps = {
+      done: false
+   };
+
+   state = {
+      done: this.props.done
+   };
+
+   toggleDone = () => {
+      this.setState({ done: !this.state.done });
+   };
+
+   render() {
+      const { text } = this.props;
+
+      return (
+         <div onClick={this.toggleDone} className={this.state.done ? 'doneToDo' : ''}>
+            {text}
+         </div>
+      );
+   }
+}
+
 class ToDoList extends Component {
    state = {
       tasks: this.props.tasks,
@@ -13,8 +37,6 @@ class ToDoList extends Component {
    addToDo = () => {
       //destruction
       const { tasks, draft } = this.state;
-
-      //without destruction
       const list = tasks;
 
       list.push(draft);
@@ -29,7 +51,7 @@ class ToDoList extends Component {
          <div>
             <h1>{title}</h1>
             {tasks.map(task => (
-               <div>{task}</div>
+               <TaskToDo text={task.text} done={task.done} />
             ))}
             <input type="text" onChange={this.updateDraft} value={draft} />
             <button onClick={this.addToDo}>Add</button>
@@ -39,7 +61,7 @@ class ToDoList extends Component {
 }
 
 class App extends Component {
-   myTasks = ['Record a ReactJS video', 'Go for a walk'];
+   myTasks = [{ done: true, text: 'Record a ReactJS video' }, { done: false, text: 'Go for a walk' }];
 
    render() {
       return (

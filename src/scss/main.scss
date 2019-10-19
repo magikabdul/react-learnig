@@ -6,4 +6,10 @@ body {
 
 div {
    margin: 10px;
+   font-weight: 700;
+}
+
+.doneToDo {
+   color: rgb(79, 252, 79);
+   text-decoration: line-through;
 }
